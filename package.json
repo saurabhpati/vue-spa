@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "node ./node_modules/webpack/bin/webpack --config ./build/webpack.build.config.js"
   },
   "keywords": [
     "vue"
@@ -13,7 +14,8 @@
   "author": "Saurabh Pati",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "vue": "^2.5.13"
   },
   "devDependencies": {
     "webpack": "^3.10.0"
