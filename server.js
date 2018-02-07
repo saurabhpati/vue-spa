@@ -10,3 +10,4 @@ app.use('/dist', express.static(path.resolve(__dirname, './dist')));
 app.get('/', (request, response) => { 
     return response.sendFile(path.resolve(__dirname, './src/index.html'));
 });
+require('./build/dev-server')(app);
