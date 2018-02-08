@@ -6,6 +6,17 @@ module.exports = class BaseConfig {
             app: path.resolve(__dirname, '../src/entry.js')
         };
 
+        this.module = {
+            rules: [
+                {
+                    enforce: "pre",
+                    test: /(\.js$)/,
+                    loader: 'eslint-loader',
+                    exclude: /node_modules/
+                }
+            ]
+        }
+
         this.resolve = {
             alias: {
                 vue: 'vue/dist/vue.js'

@@ -3,6 +3,6 @@ const BaseConfig = require('./webpack.base.config');
 module.exports = class ClientConfig extends BaseConfig {
     constructor() {
         super();
-        this.plugins = base.plugins || [];
+        this.plugins = super.plugins || [];
     }
 }
