@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = class config {
+module.exports = class BaseConfig {
     constructor() {
         this.entry = {
             app: path.resolve(__dirname, '../src/entry.js')

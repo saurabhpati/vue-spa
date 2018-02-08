@@ -1,11 +1,11 @@
 const webpack = require('webpack');
-const clientConfig = require('./webpack.client.config');
+const ClientConfig = require('./webpack.client.config');
 
 module.exports = function (app) {
-    var config = new clientConfig();
+    let config = new ClientConfig();
     config.entry.app = ['webpack-hot-middleware/client', config.entry.app];
     config.plugins.push(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
-    var clientCompiler = webpack(config);
+    let clientCompiler = webpack(config);
     app.use(require('webpack-dev-middleware')(clientCompiler, {
         stats: {
             colors: true
