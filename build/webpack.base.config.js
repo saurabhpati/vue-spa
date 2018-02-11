@@ -17,15 +17,14 @@ module.exports = class BaseConfig {
                 {
                     test: /\.vue$/,
                     loader: 'vue-loader'
+                },
+                {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/
                 }
             ]
         }
-
-        // this.resolve = {
-        //     alias: {
-        //         vue: 'vue/dist/vue.js'
-        //     }
-        // };
 
         this.output = {
             path: path.resolve(__dirname, '../dist'),
