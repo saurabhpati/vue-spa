@@ -1,7 +1,10 @@
 <template>
     <div class="columns">
         <div class="column is-one-third" v-for="post in posts" :key="post.id">
-            <app-post :post="post"></app-post>
+            <app-post :post="post">
+              <h3 slot="title">{{post.title}}</h3>
+              <span slot="content">{{post.content}}</span> 
+            </app-post>
         </div>
     </div>
 </template>
