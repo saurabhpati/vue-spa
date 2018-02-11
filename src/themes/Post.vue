@@ -5,14 +5,14 @@
             <slot name="content"></slot>
         </div>
         <footer class="card-footer">
-            <a class="card-footer-item" href="_blank">Read More</a>
+            <a class="card-footer-item" :href="link">Read More</a>
         </footer>
     </div>
 </template>
 
 <script>
 export default {
-  props: ['post']
+  props: ['link']
 }
 </script>
 
