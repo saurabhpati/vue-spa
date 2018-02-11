@@ -10,18 +10,22 @@ module.exports = class BaseConfig {
             rules: [
                 // {
                 //     enforce: "pre",
-                //     test: /(\.js$)/,
+                //     test: /(\.js$)|/\.vue$//,
                 //     loader: 'eslint-loader',
                 //     exclude: /node_modules/
                 // }
+                {
+                    test: /\.vue$/,
+                    loader: 'vue-loader'
+                }
             ]
         }
 
-        this.resolve = {
-            alias: {
-                vue: 'vue/dist/vue.js'
-            }
-        };
+        // this.resolve = {
+        //     alias: {
+        //         vue: 'vue/dist/vue.js'
+        //     }
+        // };
 
         this.output = {
             path: path.resolve(__dirname, '../dist'),
