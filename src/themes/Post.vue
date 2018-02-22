@@ -16,3 +16,18 @@ export default {
 }
 </script>
 
+<style scoped>
+.card {
+    padding-bottom: 40px;
+    height: 100%
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+</style>
+
+

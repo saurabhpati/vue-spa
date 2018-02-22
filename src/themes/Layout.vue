@@ -18,7 +18,7 @@ import Category from "./Category.vue";
 export default {
   components: {
       'app-header': AppHeader,
-      'app-footer': AppHeader,
+      'app-footer': AppFooter,
       'category': Category
   },
   data() {
