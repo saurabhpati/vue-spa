@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     //mode: 'history', // This is not working for now, see later.
+    linkActiveClass: 'is-active',
     routes:[{
         path: '/login',
         component: Login
