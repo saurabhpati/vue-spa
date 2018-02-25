@@ -8,13 +8,15 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     //mode: 'history', // This is not working for now, see later.
     linkActiveClass: 'is-active',
-    routes:[{
+    routes: [{
+        path: '/category/front-end',
+        component: Category
+    }, {
         path: '/login',
         component: Login
-    },
-    {
+    }, {
         path: '/',
-        component: Category
+        redirect: '/category/front-end'
     }]
 });
 
