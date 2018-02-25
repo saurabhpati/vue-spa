@@ -9,14 +9,14 @@ const router = new VueRouter({
     //mode: 'history', // This is not working for now, see later.
     linkActiveClass: 'is-active',
     routes: [{
-        path: '/category/front-end',
+        path: '/category/:id',
         component: Category
     }, {
         path: '/login',
         component: Login
     }, {
         path: '/',
-        redirect: '/category/front-end'
+        redirect: '/category/:id'
     }]
 });
 
