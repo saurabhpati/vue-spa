@@ -10,13 +10,14 @@ const router = new VueRouter({
     linkActiveClass: 'is-active',
     routes: [{
         path: '/category/:id',
-        component: Category
+        name: 'category',
+        component: Category,
     }, {
         path: '/login',
         component: Login
     }, {
         path: '/',
-        redirect: '/category/:id'
+        redirect: { name: 'category', params: { id: 'front-end' } }
     }]
 });
 
