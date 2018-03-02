@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Category from './themes/Category.vue';
 import Login from './themes/Login.vue';
+import NotFound from './themes/NotFound.vue';
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,9 @@ const router = new VueRouter({
     }, {
         path: '/',
         redirect: { name: 'category', params: { id: 'front-end' } }
+    }, {
+        path: '*', 
+        component: NotFound
     }]
 });
 
