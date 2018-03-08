@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Category from './themes/Category.vue';
-import Login from './themes/Login.vue';
-import NotFound from './themes/NotFound.vue';
+// import Category from './themes/Category.vue';
+// import Login from './themes/Login.vue';
+// import NotFound from './themes/NotFound.vue';
+
+const Category = () => System.import('./themes/Category.vue');
+const Login = () => System.import('./themes/Login.vue');
+const NotFound = () => System.import('./themes/NotFound.vue');
 
 Vue.use(VueRouter);
 
