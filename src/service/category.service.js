@@ -1,14 +1,8 @@
-import axios from 'axios';
+import BaseService from './base.service';
 
-axios.defaults.baseURL = 'https://api.fullstackweekly.com';
-
-class CategoryService {
-    constructor() {
-        
-    }
-
+class CategoryService extends BaseService {
     getPosts(categoryId) {
-        return axios.get(`/wp-json/wp/v2/posts?categories=${categoryId}&per_page-6`)
+        return this.serviceClient.get(`/wp-json/wp/v2/posts?categories=${categoryId}&per_page-6`)
             .then(function (response) {
                 return response.data;
             }).catch(function (reason) {
