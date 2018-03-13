@@ -1,6 +1,9 @@
 <template>
   <div class="content">
 	<h2>Login</h2>
+	<div v-if="this.isAuthenticated">
+		Welcome! Click Logout to log out.
+	</div>
 	<div class="field is-horizontal">
 		<div class="field-label is-normal">
 		  <label class="label">Username</label>
@@ -32,10 +35,10 @@
 		<div class="field-body">
 		  <div class="field">
 			<div class="control">
-			  <button class="button is-primary" v-on:click="login()">
+			  <button v-if="!this.isAuthenticated" class="button is-primary" v-on:click="login()">
 				Login
 			  </button>
-				<button class="button is-danger" v-on:click="logout()">
+				<button v-if="this.isAuthenticated" class="button is-danger" v-on:click="logout()">
 				Logout
 			  </button>
 			</div>
@@ -52,27 +55,38 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      isAuthenticated: false
     };
   },
   methods: {
     login() {
-			debugger;
+      var self = this;
       authService
         .login({ username: this.username, password: this.password })
-					.then(function(response) {
-						window.localStorage.setItem("token", response.token);
-						window.localStorage.setItem("tokenExpiration", response.expiration);
-					})
-					.catch(function(reason) {
-						window.alert("Could not Login!");
-					});
-		},
-		
-		logout() {
-			window.localStorage.removeItem("token");
-			window.localStorage.removeItem("tokenExpiration");
-		}
+        .then(function(response) {
+          window.localStorage.setItem("token", response.token);
+          window.localStorage.setItem("tokenExpiration", response.expiration);
+          self.isAuthenticated = true;
+        })
+        .catch(function(reason) {
+          window.alert("Could not Login!");
+        });
+    },
+
+    logout() {
+      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("tokenExpiration");
+      this.isAuthenticated = false;
+    }
+  },
+  created() {
+    let expiration = window.localStorage.getItem("tokenExpiration");
+    let timeStamp = new Date().getTime() / 1000;
+
+    if (expiration != null && parseInt(expiration) - timeStamp > 0) {
+      this.isAuthenticated = true;
+    }
   }
 };
 </script>
