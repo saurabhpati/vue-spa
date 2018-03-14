@@ -1,8 +1,9 @@
 <template>
   <div class="content">
 	<h2>Login</h2>
-	<div v-if="this.isAuthenticated">
+	<div v-if="isAuthenticated">
 		Welcome! Click Logout to log out.
+		<p>Name: {{profile.firstName}}</p>
 	</div>
 	<div class="field is-horizontal">
 		<div class="field-label is-normal">
@@ -56,9 +57,10 @@ export default {
     return {
       username: "",
       password: "",
-      isAuthenticated: false
+			isAuthenticated: false,
+			profile: {}
     };
-  },
+	},
   methods: {
     login() {
       var self = this;
@@ -79,7 +81,21 @@ export default {
       window.localStorage.removeItem("tokenExpiration");
       this.isAuthenticated = false;
     }
-  },
+	},
+	watch: {
+		isAuthenticated: function (isAuth) {
+			if (isAuth) {
+				var self = this;
+				authService.getProfile()
+					.then(function (result) {
+							console.log('profile result ==>', result);
+							self.profile = result;
+					});
+			} else {
+				
+			}	
+		}
+	},
   created() {
     let expiration = window.localStorage.getItem("tokenExpiration");
     let timeStamp = new Date().getTime() / 1000;

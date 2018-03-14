@@ -6,6 +6,12 @@ class AuthService extends BaseService {
             .then(response => response.data)
             .catch((reason) => { console.log(reason) });
     }
+
+    getProfile() {
+        return this.serviceClient.get('/services/profile.php')
+            .then(response => response.data)
+            .catch((reason) => { console.log(reason) });
+    }
 }
 
 let authService = new AuthService();
