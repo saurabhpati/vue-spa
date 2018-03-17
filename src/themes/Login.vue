@@ -51,16 +51,18 @@
 
 <script>
 import authService from "../service/auth.service";
+import store from "../vuex/index.js";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
       username: "",
       password: "",
-			isAuthenticated: false,
-			profile: {}
+      isAuthenticated: false,
+      profile: {}
     };
-	},
+  },
   methods: {
     login() {
       var self = this;
@@ -81,20 +83,20 @@ export default {
       window.localStorage.removeItem("tokenExpiration");
       this.isAuthenticated = false;
     }
-	},
-	watch: {
-		isAuthenticated: function (isAuth) {
-			if (isAuth) {
-				var self = this;
-				authService.getProfile()
-					.then(function (result) {
-							console.log('profile result ==>', result);
-							self.profile = result;
-					});
-			} else {
-				
-			}	
-		}
+  },
+  watch: {
+    isAuthenticated: function(isAuth) {
+      if (isAuth) {
+        var self = this;
+        authService.getProfile().then(function(result) {
+          console.log("profile result ==>", result);
+          self.profile = result;
+        });
+      }
+    }
+  },
+  computed: {
+		...mapGetters(['isAutenticated'])
 	},
   created() {
     let expiration = window.localStorage.getItem("tokenExpiration");

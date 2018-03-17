@@ -1,10 +1,12 @@
 import Vue from 'vue';
+import store from './vuex/index.js';
 import AppLayout from './themes/Layout.vue';
 import router from './router';
 
 var app = new Vue({
     router,
-    ...AppLayout
+    store,
+    ...AppLayout,
 });
 
-export { app };
+export { app, router, store };
