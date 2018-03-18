@@ -13,9 +13,7 @@ const state = {
 const store = new Vuex.Store({
     state,
     getters: {
-        isAuthenticated: function (state) {
-            return state.isAuthenticated;
-        }
+        isAuthenticated: state => state.isAuthenticated
     },
     actions: {
         login(context, credentials) {

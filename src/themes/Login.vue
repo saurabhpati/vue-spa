@@ -1,10 +1,10 @@
 <template>
   <div class="content">
 	<h2>Login</h2>
-	<!-- <div v-if="isAuthenticated">
+	<div v-if="isAuthenticated">
 		Welcome! Click Logout to log out.
 		<p>Name: {{profile.firstName}}</p>
-	</div> -->
+	</div>
 	<div class="field is-horizontal">
 		<div class="field-label is-normal">
 		  <label class="label">Username</label>
@@ -36,10 +36,10 @@
 		<div class="field-body">
 		  <div class="field">
 			<div class="control">
-			  <button class="button is-primary" v-on:click="login()">
+			  <button v-if="!isAuthenticated" class="button is-primary" v-on:click="login()">
 				Login
 			  </button>
-				<button class="button is-danger" v-on:click="logout()">
+				<button v-if="isAuthenticated" class="button is-danger" v-on:click="logout()">
 				Logout
 			  </button>
 			</div>
@@ -86,7 +86,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["isAutenticated"])
+    ...mapGetters(["isAuthenticated"])
   }
 };
 </script>
