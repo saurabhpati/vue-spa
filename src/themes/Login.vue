@@ -66,7 +66,6 @@ export default {
       logout: "logout"
     }),
     login() {
-      debugger;
       this.$store
         .dispatch("login", { username: this.username, password: this.password })
         .then(() => {

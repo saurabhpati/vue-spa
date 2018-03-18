@@ -19,7 +19,6 @@ const store = new Vuex.Store({
     },
     actions: {
         login(context, credentials) {
-            debugger;
             return authService
                 .login(credentials)
                 .then((response) => {
@@ -32,7 +31,6 @@ const store = new Vuex.Store({
     },
     mutations: {
         login(state, data) {
-            debugger;
             if (typeof window != 'undefined') {
                 window.localStorage.setItem("token", data.token);
                 window.localStorage.setItem("tokenExpiration", data.expiration);
