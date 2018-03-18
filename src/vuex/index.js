@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { resolve } from 'url';
 import authService from "../service/auth.service";
-import { debug } from 'util';
+import postsModule from './posts.js';
 
 Vue.use(Vuex);
 
@@ -46,6 +46,9 @@ const store = new Vuex.Store({
 
             state.isAuthenticated = false
         }
+    },
+    modules: {
+        postsModule
     }
 });
 
