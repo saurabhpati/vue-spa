@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const base = require('./webpack.base.config')
+const BaseConfig = require('./webpack.base.config')
 const nodeExternals = require('webpack-node-externals')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -24,5 +24,4 @@ class ServerConfig extends BaseConfig {
     }
 }
 
-const serverConfig = new ServerConfig();
-module.exports = serverConfig;
+module.exports = ServerConfig;
