@@ -1,10 +1,12 @@
 const express = require('express'),
     app = express(),
     path = require('path'),
+    fs = require('fs'),
     { createBundleRenderer } = require('vue-server-renderer');
 
 const port = process.env.PORT || 3000;
 const staticFileMiddleware = express.static(path.resolve(__dirname, './dist'));
+const indexHtml = fs.readFileSync(path.resolve(__dirname, './src/index.html'), 'utf-8');
 let renderer;
 app.listen(port, () => {
     console.log(`server is listeniing on port ${port}`);
@@ -17,7 +19,9 @@ app.get('/', (request, response) => {
         }
 
         console.log(html);
-        return response.sendFile(path.resolve(__dirname, './src/index.html'));
+        html = indexHtml.replace('{{ APP }}', html);
+        response.write(html);
+        response.end();
     });
 });
 require('./build/dev-server')(app, bundle => {

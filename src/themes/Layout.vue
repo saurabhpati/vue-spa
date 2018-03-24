@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
         <app-header></app-header>
         <section class="main-section section">
             <div class="container content">
@@ -16,8 +16,8 @@ import AppFooter from "./AppFooter.vue";
 
 export default {
   components: {
-      'app-header': AppHeader,
-      'app-footer': AppFooter
+    "app-header": AppHeader,
+    "app-footer": AppFooter
   },
   data() {
     return {};
