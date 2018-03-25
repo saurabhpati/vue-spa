@@ -1,4 +1,4 @@
-const TestConfig = require('../../../build/webpack.test.config'),
+const TestConfig = require('../../build/webpack.test.config'),
     testConfig = new TestConfig();
 
 module.exports = config => {
@@ -11,7 +11,9 @@ module.exports = config => {
         },
         plugins: [
             'karma-mocha',
-            'karma-sinon-chai'
+            'karma-sinon-chai',
+            'karma-phantomjs-launcher',
+            'karma-webpack'
         ],
         webpack: testConfig,
         webpackMiddleware: {

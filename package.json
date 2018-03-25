@@ -4,7 +4,7 @@
   "description": "Single page application using Vue.js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "karma start test/unit/karma.config.js --single-run",
     "start": "node server.js",
     "build": "node ./node_modules/webpack/bin/webpack --config ./build/webpack.base.config.js"
   },
