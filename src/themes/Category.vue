@@ -13,14 +13,22 @@
 import Post from "./Post.vue";
 import { mapGetters } from "vuex";
 
+const fetchDataAsync = (store, route) => {
+  let categoryId = route.params.id == "mobile" ? 11 : 2;
+  return store.dispatch("postsModule/updateCategory", categoryId);
+};
+
 export default {
+  asyncData(store, route) {
+    return fetchDataAsync(store, route);
+  },
   components: {
     "app-post": Post
   },
   methods: {
     loadPosts() {
-      let categoryId = this.$route.params.id == "mobile" ? 11 : 2;
-      this.$store.dispatch("postsModule/updateCategory", categoryId);
+      debugger;
+      fetchDataAsync(this.$store, this.$route);
     }
   },
   created() {

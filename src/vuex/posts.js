@@ -11,7 +11,7 @@ const getters = {
 
 const actions = {
     updateCategory: (context, categoryId) => {
-        categoryService
+        return categoryService
             .getPosts(categoryId)
             .then((data) => {
                 context.commit('updateCategory', { categoryId, data });
