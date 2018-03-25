@@ -24,4 +24,4 @@ class ServerConfig extends BaseConfig {
     }
 }
 
-module.exports = ServerConfig;
+module.exports = new ServerConfig();

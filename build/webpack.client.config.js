@@ -1,11 +1,15 @@
-const BaseConfig = require('./webpack.base.config');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const BaseConfig = require('./webpack.base.config'),
+      ExtractTextWebpackPlugin = require('extract-text-webpack-plugin'),
+      path = require('path');
 
-module.exports = class ClientConfig extends BaseConfig {
+class ClientConfig extends BaseConfig {
     constructor() {
         super();
         this.plugins = super.plugins || [];
+        this.output.path = path.resolve(__dirname, '../dist/assets');
         this.plugins.push(new ExtractTextWebpackPlugin('css/styles.css'));
         this.module.rules.find(rule => rule.loader == 'vue-loader').options.extractCSS = true;
     }
 }
+
+module.exports = new ClientConfig();
