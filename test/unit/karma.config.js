@@ -1,5 +1,4 @@
-const TestConfig = require('../../build/webpack.test.config'),
-    testConfig = new TestConfig();
+const testConfig = require('../../build/webpack.test.config');
 
 module.exports = config => {
     config.set({
