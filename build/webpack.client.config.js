@@ -4,7 +4,10 @@ const base = require('./webpack.base.config'),
     webpack = require('webpack');
 
 const config = Object.assign({}, base, {
-    plugins: (base.plugins || [])
+    plugins: (base.plugins || []).concat(new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        filename: 'assets/js/[name].js'
+    }))
 });
 config.output.path = path.resolve(__dirname, '../dist');
 config.plugins.push(new ExtractTextWebpackPlugin('assets/css/styles.css'));
@@ -19,23 +22,5 @@ if (process.env.NODE_ENV == 'production') {
         })
     );
 }
-
-// class ClientConfig extends baseConfig {
-//     constructor() {
-//         super();
-//         this.plugins = super.plugins || [];
-//         this.output.path = path.resolve(__dirname, '../dist');
-//         this.plugins.push(new ExtractTextWebpackPlugin('assets/css/styles.css'));
-//         this.module.rules.find(rule => rule.loader == 'vue-loader').options.extractCSS = true;
-
-//         if (process.env.NODE_ENV == 'production') {
-//             this.plugins.push(new webpack.optimize.UglifyJsPlugin({
-//                 compress: {
-//                     warning: false
-//                 }
-//             }))
-//         }
-//     }
-// }
 
 module.exports = config;

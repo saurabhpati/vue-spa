@@ -3,7 +3,8 @@ const path = require('path');
 class BaseConfig {
     constructor() {
         this.entry = {
-            app: path.resolve(__dirname, '../src/client-entry.js')
+            app: path.resolve(__dirname, '../src/client-entry.js'),
+            vendor: ['vue',  'vue-router', 'vuex','axios']
         };
 
         this.module = {
