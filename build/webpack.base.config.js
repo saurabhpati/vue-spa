@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = class BaseConfig {
+class BaseConfig {
     constructor() {
         this.entry = {
             app: path.resolve(__dirname, '../src/client-entry.js')
@@ -47,3 +47,5 @@ module.exports = class BaseConfig {
         }
     }
 };
+
+module.exports = new BaseConfig();

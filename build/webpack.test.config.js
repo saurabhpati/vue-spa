@@ -1,8 +1,6 @@
-const BaseConfig = require('./webpack.base.config');
+const base = require('./webpack.base.config');
 
-module.exports = class TestConfig extends BaseConfig {
-    constructor() {
-        super();
-        delete this.entry;
-    }
-}
+const config = Object.assign({}, base,  {});
+delete config.entry;
+
+module.exports = config;

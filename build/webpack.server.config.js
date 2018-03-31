@@ -1,27 +1,42 @@
 const path = require('path')
 const webpack = require('webpack')
-const BaseConfig = require('./webpack.base.config')
+const base = require('./webpack.base.config')
 const nodeExternals = require('webpack-node-externals')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-class ServerConfig extends BaseConfig {
-    constructor() {
-        super();
-        this.entry = path.resolve(__dirname, '../src/server-entry.js');
-        this.target = 'node';
-        this.devtool = 'source-map';
-        this.output = {
-            path: path.resolve(__dirname, '../dist'),
-            filename: 'server/[name].js',
-            libraryTarget: 'commonjs2'
-        }
-        this.externals = nodeExternals({
-            whitelist: /\.css$/
-        });
+const config = Object.assign({}, base, {
+    entry = path.resolve(__dirname, '../src/server-entry.js'),
+    target = 'node',
+    devtool = 'source-map',
+    output = {
+        path: path.resolve(__dirname, '../dist'),
+        filename: 'server/[name].js',
+        libraryTarget: 'commonjs2'
+    },
+    externals = nodeExternals({
+        whitelist: /\.css$/
+    }),
+    plugins = [new ExtractTextPlugin('server/styles.css')]
+});
 
-        this.plugins = super.plugins || [];
-        this.plugins.push(new ExtractTextPlugin('server/styles.css'));
-    }
-}
+// class ServerConfig extends BaseConfig {
+//     constructor() {
+//         super();
+//         this.entry = path.resolve(__dirname, '../src/server-entry.js');
+//         this.target = 'node';
+//         this.devtool = 'source-map';
+//         this.output = {
+//             path: path.resolve(__dirname, '../dist'),
+//             filename: 'server/[name].js',
+//             libraryTarget: 'commonjs2'
+//         }
+//         this.externals = nodeExternals({
+//             whitelist: /\.css$/
+//         });
 
-module.exports = new ServerConfig();
+//         this.plugins = super.plugins || [];
+//         this.plugins.push(new ExtractTextPlugin('server/styles.css'));
+//     }
+// }
+
+module.exports = config;
