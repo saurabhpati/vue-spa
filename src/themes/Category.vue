@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     loadPosts() {
-      debugger;
       fetchDataAsync(this.$store, this.$route);
     }
   },

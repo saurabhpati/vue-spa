@@ -6,8 +6,8 @@ class ClientConfig extends BaseConfig {
     constructor() {
         super();
         this.plugins = super.plugins || [];
-        this.output.path = path.resolve(__dirname, '../dist/assets');
-        this.plugins.push(new ExtractTextWebpackPlugin('css/styles.css'));
+        this.output.path = path.resolve(__dirname, '../dist');
+        this.plugins.push(new ExtractTextWebpackPlugin('assets/css/styles.css'));
         this.module.rules.find(rule => rule.loader == 'vue-loader').options.extractCSS = true;
     }
 }

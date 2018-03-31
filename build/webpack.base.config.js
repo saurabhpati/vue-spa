@@ -43,7 +43,7 @@ module.exports = class BaseConfig {
         this.output = {
             path: path.resolve(__dirname, '../dist'),
             publicPath: '/',
-            filename: 'js/[name].js'
+            filename: 'assets/js/[name].js'
         }
     }
 };
