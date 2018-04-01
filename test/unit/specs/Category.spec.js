@@ -18,13 +18,13 @@ const component = new Vue({
     render: h => h('router-view')
 })
 
-describe('Category.vue', () => {
-    it('should load front end links', done => {
-        store.watch((state) => {
-            return state.postsModule.posts;
-        }, () => {
-            expect(component.$el.querySelectorAll('.column').length).to.equal(6);
-            done();
-        })
-    })
-});
+// describe('Category.vue', () => {
+//     it('should load front end links', (done) => {
+//         store.watch((state) => {
+//             return state.postsModule.posts;
+//         }, () => {
+//             expect(component.$el.querySelectorAll('.column').length).to.equal(6);
+//             done();
+//         });
+//     })
+// });
